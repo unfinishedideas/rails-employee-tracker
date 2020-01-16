@@ -1,8 +1,11 @@
 class EmployeesController < ApplicationController
 
   def index
-    # @division = Division.find(params[:division_id])
-    @employees = Employee.all
+    if params[:search_term]
+      @employees = Employee.search_term(params[:search_term].titleize)
+    else
+      @employees = Employee.all
+    end
     render :index
   end
 
@@ -54,7 +57,7 @@ class EmployeesController < ApplicationController
       project = Project.find(params[:employee].fetch(:id))
       @employee.projects << project
       # render :show
-      redirect_to employees_path
+      redirect_to employee_path
     end
   end
 

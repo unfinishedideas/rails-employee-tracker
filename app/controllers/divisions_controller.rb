@@ -1,7 +1,11 @@
 class DivisionsController < ApplicationController
 
   def index
-    @divisions = Division.all
+    if params[:search_term]
+      @divisions = Division.search_term(params[:search_term].titleize)
+    else
+      @divisions = Division.all
+    end
     render :index
   end
 

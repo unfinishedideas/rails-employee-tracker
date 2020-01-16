@@ -3,6 +3,8 @@ class Project < ApplicationRecord
 
   before_save(:titleize_project)
 
+  scope :search_term, -> (search_param) { where("project_name like ?", "%#{search_param}%") }
+
   private
   def titleize_project
     self.project_name = self.project_name.titleize

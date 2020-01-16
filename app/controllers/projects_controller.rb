@@ -1,7 +1,11 @@
 class ProjectsController < ApplicationController
 
   def index
-    @projects = Project.all
+    if params[:search_term]
+      @projects = Project.search_term(params[:search_term].titleize)
+    else
+      @projects = Project.all
+    end
     render :index
   end
 
