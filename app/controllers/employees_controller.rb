@@ -14,8 +14,10 @@ class EmployeesController < ApplicationController
   def create
     @employee = Employee.new(employee_params)
     if @employee.save
+      flash[:notice] = "Employee successfully added!"
       redirect_to employees_path
     else
+      flash[:alert] = "Division not created! :("
       render :new
     end
   end
@@ -43,6 +45,7 @@ class EmployeesController < ApplicationController
     if (params[:employee].has_key?(:employee_name))
       @employee = Employee.find(params[:id])
       if @employee.update(employee_params)
+        flash[:notice] = "Employee successfully updated!"
         redirect_to employees_path
       else
         render :edit
