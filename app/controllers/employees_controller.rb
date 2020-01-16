@@ -37,6 +37,7 @@ class EmployeesController < ApplicationController
     @divisions = @employee.divisions
     @projects = @employee.projects
     @all_projects = Project.all
+    @all_divisions = Division.all
     render :show
   end
 
@@ -45,6 +46,7 @@ class EmployeesController < ApplicationController
   def update
     @employee = Employee.find(params[:id])
     # binding.pry
+
     if (params[:employee].has_key?(:employee_name))
       @employee = Employee.find(params[:id])
       if @employee.update(employee_params)
@@ -52,11 +54,22 @@ class EmployeesController < ApplicationController
         redirect_to employees_path
       else
         render :edit
+
       end
-    else
+
+    elsif (params[:commit] === "add_project")
       project = Project.find(params[:employee].fetch(:id))
       @employee.projects << project
       # render :show
+      redirect_to employee_path
+
+    elsif (params[:commit] === "add_division")
+      division = Division.find(params[:employee].fetch(:id))
+      @employee.divisions << division
+      # render :show
+      redirect_to employee_path
+    else
+      flash[:alert] = "NOTHING WORKED! :("
       redirect_to employee_path
     end
   end
@@ -69,7 +82,7 @@ class EmployeesController < ApplicationController
 
   private
   def employee_params
-    params.require(:employee).permit(:employee_name, :employee_id, :project_id)
+    params.require(:employee).permit(:employee_name, :employee_id)
   end
 
 end

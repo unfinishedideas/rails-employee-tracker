@@ -10,20 +10,24 @@
 </head>
 
 <body>
-  <% content_for(:navbar) do %>
-  <p><a href="/">Home</a> |
-    <%= link_to "Divisions", divisions_path %> |
-    <%= link_to "Projects", projects_path %> |
-    <%= link_to "Employees", employees_path %>
-  </p>
-  <% end %>
-  
-  <%= flash[:alert] %>
-  <%= flash[:notice] %>
+  <div class="container">
 
-  <%= yield :navbar %>
+    <% content_for(:navbar) do %>
+    <p><a href="/">Home</a> |
+      <%= link_to "Divisions", divisions_path %> |
+      <%= link_to "Projects", projects_path %> |
+      <%= link_to "Employees", employees_path %>
+    </p>
+    <% end %>
 
-  <%= yield %>
+    <%= flash[:alert] %>
+    <%= flash[:notice] %>
+
+    <%= yield :navbar %>
+
+    <%= yield %>
+  </div>
+
 </body>
 </html>
 
