@@ -6,6 +6,11 @@ class Employee < ApplicationRecord
 
   scope :search_term, -> (search_param) { where("employee_name like ?", "%#{search_param}%") }
 
+  validates :employee_name, presence: true
+
+  validates_length_of :employee_name, minimum: 2
+
+
   private
   def titleize_employee
     self.employee_name = self.employee_name.titleize

@@ -5,6 +5,8 @@ class Project < ApplicationRecord
 
   scope :search_term, -> (search_param) { where("project_name like ?", "%#{search_param}%") }
 
+  validates :project_name, presence: true
+
   private
   def titleize_project
     self.project_name = self.project_name.titleize

@@ -12,7 +12,10 @@ describe Employee do
   end
 end
 
+describe Employee do
+  it { should validate_presence_of(:employee_name) }
+end
 
-# describe Employee do
-#   it { should belong_to(:division) }
-# end
+describe Employee do
+  it { should validate_length_of(:employee_name).is_at_least(2) }
+end

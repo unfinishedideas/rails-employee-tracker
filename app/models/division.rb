@@ -5,6 +5,7 @@ class Division < ApplicationRecord
 
   scope :search_term, -> (search_param) { where("division_name like ?", "%#{search_param}%") }
 
+  validates :division_name, presence: true
 
   private
   def titleize_division
