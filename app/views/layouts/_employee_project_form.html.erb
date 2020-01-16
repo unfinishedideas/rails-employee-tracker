@@ -1,0 +1,33 @@
+<%= render "layouts/errors", :object => @employee %>
+
+
+
+<!--
+
+<form method="patch">
+  <input name="_method" type="hidden" value="patch">
+    <select>
+    <% @all_projects.each do |project| %>
+    <option value="<%= project.id %>"><%= project.project_name %></option>
+    <% end %>
+  </select>
+    <button type="submit" name="button">GO</button>
+</form>
+
+ -->
+
+
+
+<HR>
+
+
+
+
+
+
+  <%= form_for @employee do |f| %>
+  <%= f.label :id %>
+  <%= f.number_field :id %>
+
+  <%= f.submit %>
+  <% end %>

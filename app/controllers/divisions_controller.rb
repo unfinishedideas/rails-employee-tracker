@@ -26,6 +26,8 @@ class DivisionsController < ApplicationController
 
   def show
     @division = Division.find(params[:id])
+    @employees = @division.employees.all
+
     render :show
   end
 
@@ -46,7 +48,7 @@ class DivisionsController < ApplicationController
 
   private
   def division_params
-    params.require(:division).permit(:name)
+    params.require(:division).permit(:division_name)
   end
 
 end

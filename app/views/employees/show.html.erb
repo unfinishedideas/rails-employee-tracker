@@ -1,0 +1,36 @@
+<h1><%= @employee.employee_name %></h1>
+
+<% if @divisions.any? %>
+  <ul>
+    <% @divisions.each do |division| %>
+      <li><%= link_to division.division_name, division_path(division) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no divisions yet.</p>
+<% end %>
+
+<% if @projects.any? %>
+  <ul>
+    <% @projects.each do |project| %>
+      <li><%= link_to project.project_name, project_path(project) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no projects yet.</p>
+<% end %>
+
+
+<hr>
+<h1>add project:</h1>
+
+<%= render "layouts/employee_project_form" %>
+
+<hr>
+
+<p><%= link_to "Edit", edit_employee_path(@employee) %></p>
+<p><%= link_to "Delete", employee_path(@employee),
+                         :data => {:confirm => "You sure?",
+                                   :method => "delete"} %></p>
+
+<p><%= link_to "Return to employees", employees_path %></p>
