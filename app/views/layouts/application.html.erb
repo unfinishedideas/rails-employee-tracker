@@ -13,17 +13,20 @@
   <div class="container">
 
     <% content_for(:navbar) do %>
-    <p><a href="/">Home</a> |
+    <h3 class="navbar"><a href="/">Home</a> |
       <%= link_to "Divisions", divisions_path %> |
       <%= link_to "Projects", projects_path %> |
       <%= link_to "Employees", employees_path %>
-    </p>
+    </h3>
     <% end %>
+    <%= yield :navbar %>
+
 
     <%= flash[:alert] %>
     <%= flash[:notice] %>
 
-    <%= yield :navbar %>
+
+
 
     <%= yield %>
   </div>

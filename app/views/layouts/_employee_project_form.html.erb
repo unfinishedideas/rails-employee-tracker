@@ -1,7 +1,10 @@
 <%= render "layouts/errors", :object => @employee %>
-  <%= form_for @employee do |f| %>
 
-  <%= collection_select(:employee, :id, @all_projects, :id, :project_name) %>
+<%= form_for @employee do |f| %>
+<%= collection_select(:employee, :id, @all_projects, :id, :project_name) %>
+<%= submit_tag("add_project") %>
+<% end %>
 
-  <%= submit_tag("add_project") %>
-  <% end %>
+<%= form_for @employee do |f| %>
+<%= submit_tag("delete_all_projects") %>
+<% end %>

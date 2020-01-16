@@ -45,28 +45,31 @@ class EmployeesController < ApplicationController
 
   def update
     @employee = Employee.find(params[:id])
-    # binding.pry
-
-    if (params[:employee].has_key?(:employee_name))
+    if (params[:commit] === "edit_employee")
       @employee = Employee.find(params[:id])
       if @employee.update(employee_params)
         flash[:notice] = "Employee successfully updated!"
         redirect_to employees_path
       else
         render :edit
-
       end
-
     elsif (params[:commit] === "add_project")
       project = Project.find(params[:employee].fetch(:id))
       @employee.projects << project
-      # render :show
       redirect_to employee_path
-
     elsif (params[:commit] === "add_division")
+      @employee.divisions.delete_all
       division = Division.find(params[:employee].fetch(:id))
       @employee.divisions << division
-      # render :show
+      redirect_to employee_path
+    elsif (params[:commit] === "Remove project")
+      # binding.pry
+      project = Project.find(params[:project_id].to_i)
+
+      @employee.projects.delete(project)
+      redirect_to employee_path
+    elsif (params[:commit] === "delete_all_projects")
+      @employee.projects.delete_all
       redirect_to employee_path
     else
       flash[:alert] = "NOTHING WORKED! :("

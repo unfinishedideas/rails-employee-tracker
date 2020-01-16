@@ -1,6 +1,6 @@
 <%= render "layouts/errors", :object => @employee %>
-  <%= form_for @employee do |f| %>
 
+  <%= form_for @employee do |f| %>
   <%= collection_select(:employee, :id, @all_divisions, :id, :division_name) %>
   <%= submit_tag("add_division") %>
   <% end %>

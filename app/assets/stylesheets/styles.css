@@ -1,3 +1,26 @@
+/* tint */
 h1 {
-  color: red;
+  color: rgb(93, 79, 140);
 }
+
+/* primary */
+h2 {
+  color: rgb(48, 34, 95);
+}
+
+/* shade */
+p {
+  color: rgb(3, 0, 50);
+}
+
+.navbar {
+  text-align: center;
+  margin-bottom: 0px;
+
+}
+
+/* complement */
+/* rgb(207, 221, 160) */
+
+/* random text */
+/* rgb(120, 193, 185) */
