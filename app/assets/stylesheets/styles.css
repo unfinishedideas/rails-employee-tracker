@@ -19,6 +19,15 @@ p {
 
 }
 
+.projectClass {
+  /* border: 2px solid black; */
+  padding-left: 5%;
+  padding-right: 5%;
+  font-size: 25px;
+  /* background-color: rgba(207, 221, 160, .5); */
+  border-radius: 40%;
+}
+
 /* complement */
 /* rgb(207, 221, 160) */
 
