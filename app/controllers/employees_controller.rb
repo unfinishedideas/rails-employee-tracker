@@ -33,12 +33,19 @@ class EmployeesController < ApplicationController
   end
 
   def show
+    # GOOD STUFF
     @employee = Employee.find(params[:id])
     @divisions = @employee.divisions
     @projects = @employee.projects
-    @all_projects = Project.all
+    # @all_projects = Project.all
     @all_divisions = Division.all
+
+    @current_projects = @employee.projects
+    id_array = []
+    current = @current_projects.map { |e| id_array.push(e.id) }
+    @available_projects = Project.all.where.not(id: id_array)
     render :show
+
   end
 
 
