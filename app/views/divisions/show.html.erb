@@ -1,5 +1,18 @@
 <h1><%= @division.division_name %></h1>
 
+<h1>Employees:</h1>
+  <% if @employees.any? %>
+  <ul>
+    <% @employees.each do |employee| %>
+    <li><%= link_to employee.employee_name, employee_path(employee) %></li>
+    <% end %>
+  </ul>
+  <% else %>
+  <p>There are no employees yet.</p>
+  <% end %>
+
+
+
 <p><%= link_to "Edit", edit_division_path(@division) %></p>
 <p><%= link_to "Delete", division_path(@division),
                          :data => {:confirm => "You sure?",
