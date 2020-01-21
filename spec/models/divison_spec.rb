@@ -7,7 +7,8 @@ end
 
 describe Division do
   it("titleizes the name of an employee") do
-    division = Division.create({division_name: "giant steps"})
-    expect(division.division_name()).to(eq("Giant Steps"))
+    # division = Division.create({division_name: "giant steps"})
+    division = FactoryBot.create(:division)
+    expect(division.division_name()).to(eq("Blueberry Kush"))
   end
 end

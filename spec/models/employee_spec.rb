@@ -7,8 +7,9 @@ end
 
 describe Employee do
   it("titleizes the name of an employee") do
-    employee = Employee.create({employee_name: "giant steps"})
-    expect(employee.employee_name()).to(eq("Giant Steps"))
+    # employee = Employee.create({employee_name: "giant steps"})
+    employee = FactoryBot.create(:employee)
+    expect(employee.employee_name()).to(eq("Tim"))
   end
 end
 

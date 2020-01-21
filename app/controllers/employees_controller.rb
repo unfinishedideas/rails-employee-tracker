@@ -1,4 +1,5 @@
 class EmployeesController < ApplicationController
+  before_action :authorize, only: [:new, :edit, :update]
 
   def index
     if params[:search_term]
