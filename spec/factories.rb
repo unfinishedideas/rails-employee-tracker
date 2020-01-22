@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory(:division) do
-    division_name {'Blueberry Kush'}
+    division_name {'blueberry kush'}
   end
   factory(:employee) do
     employee_name { 'Tim' }
